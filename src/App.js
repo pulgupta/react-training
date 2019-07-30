@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Img from "./components/MyImg";
+import MyImg from "./components/MyImg";
 import MyAnchor from "./components/MyAnchor";
 import MyHeader from "./components/MyHeader";
 
@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <MyHeader className="App-header">
-        <Img alt="abc" />
+        <MyImg alt="abc" />
         <Img1 alt="xyz" />
         <Img2 alt="abc" />
         <p>

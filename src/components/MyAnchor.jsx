@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // Functional component
 const MyAnchor = ({ text, href }) => {
@@ -12,6 +13,11 @@ const MyAnchor = ({ text, href }) => {
       {text}
     </a>
   );
+};
+
+MyAnchor.propTypes = {
+  text: PropTypes.string,
+  href: PropTypes.string
 };
 
 export default MyAnchor;
