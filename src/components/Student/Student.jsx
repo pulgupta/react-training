@@ -2,9 +2,19 @@ import React, { Component } from "react";
 import Axios from "axios";
 import "./Student.css";
 
+const DisplayDetails = ({ name, age }) => {
+  return (
+    <>
+      <div>{name}</div>
+      <div>{age}</div>
+    </>
+  );
+};
+
 class Student extends Component {
   state = {
-    students: []
+    students: [],
+    details: {}
   };
 
   async componentDidMount() {
@@ -14,17 +24,28 @@ class Student extends Component {
     this.setState({ students: studentData.data });
   }
 
+  showDetails = index => {
+    this.setState({
+      details: {
+        name: this.state.students[index].name,
+        age: this.state.students[index].age
+      }
+    });
+  };
+
   render() {
     return (
       <>
         <p>Student Data</p>
-        {this.state.students.map(student => (
-          <table className="student">
+        {this.state.students.map((student, index) => (
+          <table className="student" key={index}>
             <tbody>
               <tr>
                 <td>Name:</td>
                 <td>
-                  <span>{student.name}</span>
+                  <span onClick={() => this.showDetails(index)}>
+                    {student.name}
+                  </span>
                 </td>
               </tr>
               <tr>
@@ -36,6 +57,10 @@ class Student extends Component {
             </tbody>
           </table>
         ))}
+        <DisplayDetails
+          name={this.state.details.name}
+          age={this.state.details.age}
+        />
       </>
     );
   }
