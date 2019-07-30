@@ -1,8 +1,9 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Img from "./components/Img";
-import MyAnchor from "./components/anchor";
+import Img from "./components/MyImg";
+import MyAnchor from "./components/MyAnchor";
+import MyHeader from "./components/MyHeader";
 
 // A very small component
 const Img1 = props => {
@@ -14,10 +15,11 @@ const Img2 = ({ alt: alt, className }) => {
   return <img src={logo} className="App-logo" alt={alt} />;
 };
 
+// passing all the sub components like a children to our header component
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <MyHeader className="App-header">
         <Img alt="abc" />
         <Img1 alt="xyz" />
         <Img2 alt="abc" />
@@ -25,7 +27,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <MyAnchor href="https://reactjs.org" text="Learn React" />
-      </header>
+      </MyHeader>
     </div>
   );
 }
