@@ -4,6 +4,7 @@ import "./App.css";
 import MyImg from "./components/MyImg";
 import MyAnchor from "./components/MyAnchor";
 import MyHeader from "./components/MyHeader";
+import Student from "./components/Student/Student";
 
 // A very small component
 const Img1 = props => {
@@ -27,6 +28,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <MyAnchor href="https://reactjs.org" text="Learn React" />
+        <Student />
       </MyHeader>
     </div>
   );
