@@ -16,7 +16,13 @@ const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 // A very small component
 const Img1 = props => {
-  return <img src={logo} className="App-logo" alt={props.alt} />;
+  return (
+    <div>
+      <img src={logo} className="App-logo" alt={props.alt} />
+      <br />
+      <a href="/student">Check Students</a>
+    </div>
+  );
 };
 
 // this means that I was getting a props but now react will just pick two properties from the props and pass to our method.
@@ -45,11 +51,9 @@ function App() {
         )}
       >
         <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={Img1} />
-            <Route path="/student" component={Student} />
-            <Route path="/studentdetails" component={StudentDetails} />
-          </Switch>
+          <Route exact path="/" component={Img1} />
+          <Route path="/student" component={Student} />
+          <Route path="/studentdetails" component={StudentDetails} />
         </BrowserRouter>
       </Provider>
     </div>

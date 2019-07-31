@@ -1,17 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 const StudentDetails = props => {
   return (
     <React.Fragment>
+      <a href="/student">Back</a>
+      <br />
+      <br />
       <div>
-        <span>Name of the selected student is: {props.student.name}</span>
-      </div>
-      <div>
-        <span>
+        <p>Name of the selected student is: {props.student.name}</p>
+        <p>
           Age of {props.student.name} is {props.student.age}
-        </span>
+        </p>
+        <p>Class is: {props.student.class}</p>
+        <p>Section is: {props.student.section}</p>
+        <p>Roll Number is: {props.student.rollNumber}</p>
       </div>
     </React.Fragment>
   );
