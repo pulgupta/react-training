@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Axios from "axios";
 import "./Student.css";
 import StudentDetails from "../StudentDetails";
+import { connect } from "react-redux";
+import { GetStudentList } from "../../actions";
 
 class Student extends Component {
   state = {
@@ -10,9 +11,10 @@ class Student extends Component {
   };
 
   async componentDidMount() {
-    new Axios("https://student-management-api-1u3cd4j7s.now.sh/students").then(
-      data => this.setState({ students: data.data })
-    );
+    this.props.GetStudentList();
+    // new Axios("https://student-management-api-1u3cd4j7s.now.sh/students").then(
+    //   data => this.setState({ students: data.data })
+    // );
     // const studentData = await Axios(
     //   "https://student-management-api-1u3cd4j7s.now.sh/students"
     // );
@@ -50,4 +52,17 @@ class Student extends Component {
   }
 }
 
-export default Student;
+const mapDispatchToProps = {
+  GetStudentList
+};
+
+const mapStoreToProps = store => {
+  return {
+    students: store.Student.studentList
+  };
+};
+
+export default connect(
+  mapStoreToProps,
+  mapDispatchToProps
+)(Student);
