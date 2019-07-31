@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 const StudentDetails = props => {
   return (
     <React.Fragment>
-      <a href="/student">Back</a>
+      <span className="pointer" onClick={() => props.history.push("/student")}>
+        Back
+      </span>
       <br />
       <br />
       <div>
@@ -21,7 +23,6 @@ const StudentDetails = props => {
 };
 
 const mapStoreToProps = store => {
-  console.log("store is", store);
   return {
     student: store.SelectedStudent.selectedStudent
   };

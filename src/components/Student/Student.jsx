@@ -11,7 +11,7 @@ class Student extends Component {
     details: {}
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     if (this.props.students.length === 0) {
       console.log("So the list of students are still not set");
       this.props.GetStudentList();
@@ -38,7 +38,9 @@ class Student extends Component {
         <p>Student Data</p>
         {this.props.students.map((student, index) => (
           <span className="student" key={index}>
-            <span onClick={() => this.showDetails(index)}>{student.name}</span>
+            <span className="pointer" onClick={() => this.showDetails(index)}>
+              {student.name}
+            </span>
             <span>: {student.age}</span>
           </span>
         ))}
@@ -54,7 +56,6 @@ const mapDispatchToProps = {
 };
 
 const mapStoreToProps = store => {
-  console.log(store);
   return {
     students: store.Student.studentList
   };
