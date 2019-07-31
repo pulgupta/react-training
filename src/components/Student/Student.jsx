@@ -5,8 +5,14 @@ import "./Student.css";
 const DisplayDetails = ({ name, age }) => {
   return (
     <>
-      <div>{name}</div>
-      <div>{age}</div>
+      <div>
+        <span>Name of the selected student is: {name}</span>
+      </div>
+      <div>
+        <span>
+          Age of {name} is {age}
+        </span>
+      </div>
     </>
   );
 };
@@ -57,10 +63,12 @@ class Student extends Component {
             </tbody>
           </table>
         ))}
-        <DisplayDetails
-          name={this.state.details.name}
-          age={this.state.details.age}
-        />
+        {Object.keys(this.state.details).length !== 0 && (
+          <DisplayDetails
+            name={this.state.details.name}
+            age={this.state.details.age}
+          />
+        )}
       </>
     );
   }
