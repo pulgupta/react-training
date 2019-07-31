@@ -37,7 +37,13 @@ function App() {
         </p>
         <MyAnchor href="https://reactjs.org" text="Learn React" />
       </MyHeader> */}
-      <Provider store={createStoreWithMiddleware(reducers)}>
+      <Provider
+        store={createStoreWithMiddleware(
+          reducers,
+          window.__REDUX_DEVTOOLS_EXTENSION__ &&
+            window.__REDUX_DEVTOOLS_EXTENSION__()
+        )}
+      >
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Img1} />

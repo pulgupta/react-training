@@ -35,7 +35,7 @@ class Student extends Component {
       <>
         <a href="/">Homepage</a>
         <p>Student Data</p>
-        {this.state.students.map((student, index) => (
+        {this.props.students.map((student, index) => (
           <span className="student" key={index}>
             <span onClick={() => this.showDetails(index)}>{student.name}</span>
             <span>: {student.age}</span>
@@ -57,6 +57,7 @@ const mapDispatchToProps = {
 };
 
 const mapStoreToProps = store => {
+  console.log(store);
   return {
     students: store.Student.studentList
   };
