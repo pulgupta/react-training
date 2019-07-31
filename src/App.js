@@ -5,6 +5,8 @@ import MyImg from "./components/MyImg";
 import MyAnchor from "./components/MyAnchor";
 import MyHeader from "./components/MyHeader";
 import Student from "./components/Student/Student";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import StudentDetails from "./components/StudentDetails";
 
 // A very small component
 const Img1 = props => {
@@ -20,7 +22,7 @@ const Img2 = ({ alt: alt, className }) => {
 function App() {
   return (
     <div className="App">
-      <MyHeader className="App-header">
+      {/* <MyHeader className="App-header">
         <MyImg alt="abc" />
         <Img1 alt="xyz" />
         <Img2 alt="abc" />
@@ -28,8 +30,14 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <MyAnchor href="https://reactjs.org" text="Learn React" />
-        <Student />
-      </MyHeader>
+      </MyHeader> */}
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Img1} />
+          <Route path="/student" component={Student} />
+          <Route path="/details" component={StudentDetails} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
