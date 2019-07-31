@@ -5,7 +5,7 @@ import "./App.css";
 // import MyAnchor from "./components/MyAnchor";
 // import MyHeader from "./components/MyHeader";
 import Student from "./components/Student/Student";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter } from "react-router-dom";
 import StudentDetails from "./components/StudentDetails";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
