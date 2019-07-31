@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DisplayDetails = ({ name, age }) => {
+const StudentDetails = ({ name, age }) => {
   return (
     <React.Fragment>
       <div>
@@ -16,9 +16,9 @@ const DisplayDetails = ({ name, age }) => {
   );
 };
 
-DisplayDetails.propTypes = {
+StudentDetails.propTypes = {
   name: PropTypes.string,
   age: PropTypes.number
 };
 
-export default DisplayDetails;
+export default StudentDetails;

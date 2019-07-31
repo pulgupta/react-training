@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import "./Student.css";
-import DisplayDetails from "../DisplayDetails";
+import StudentDetails from "../StudentDetails";
 
 class Student extends Component {
   state = {
@@ -10,10 +10,13 @@ class Student extends Component {
   };
 
   async componentDidMount() {
-    const studentData = await Axios(
-      "https://student-management-api-1u3cd4j7s.now.sh/students"
+    new Axios("https://student-management-api-1u3cd4j7s.now.sh/students").then(
+      data => this.setState({ students: data.data })
     );
-    this.setState({ students: studentData.data });
+    // const studentData = await Axios(
+    //   "https://student-management-api-1u3cd4j7s.now.sh/students"
+    // );
+    // this.setState({ students: studentData.data });
   }
 
   showDetails = index => {
@@ -36,7 +39,7 @@ class Student extends Component {
           </span>
         ))}
         {Object.keys(this.state.details).length !== 0 && (
-          <DisplayDetails
+          <StudentDetails
             name={this.state.details.name}
             age={this.state.details.age}
           />
