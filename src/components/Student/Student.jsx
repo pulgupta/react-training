@@ -31,6 +31,7 @@ class Student extends Component {
   render() {
     return (
       <>
+        <a href="/">Homepage</a>
         <p>Student Data</p>
         {this.state.students.map((student, index) => (
           <span className="student" key={index}>
