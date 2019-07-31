@@ -44,24 +44,10 @@ class Student extends Component {
       <>
         <p>Student Data</p>
         {this.state.students.map((student, index) => (
-          <table className="student" key={index}>
-            <tbody>
-              <tr>
-                <td>Name:</td>
-                <td>
-                  <span onClick={() => this.showDetails(index)}>
-                    {student.name}
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>Age:</td>
-                <td>
-                  <span>{student.age}</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <span className="student" key={index}>
+            <span onClick={() => this.showDetails(index)}>{student.name}</span>
+            <span>: {student.age}</span>
+          </span>
         ))}
         {Object.keys(this.state.details).length !== 0 && (
           <DisplayDetails
