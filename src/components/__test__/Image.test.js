@@ -17,5 +17,6 @@ describe("Img Details", () => {
   it("should have the correct source", () => {
     const wrapper = shallow(<MyImg alt={"text"} className={"App-logo"} />);
     const img = wrapper.find(".App-logo");
+    // TO_DO
   });
 });
