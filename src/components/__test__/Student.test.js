@@ -12,4 +12,11 @@ describe("Student Details", () => {
     const wrapper = shallow(<Student />);
     expect(wrapper.state().students.length).toBe(0);
   });
+
+  it("component mount is getting called", () => {
+    // const spy = jest.spy(Student.prototype, "componentDidMount");
+    // TODO Test the mocking part
+    const wrapper = shallow(<Student />);
+    expect(wrapper.state().students.length).toBe(0);
+  });
 });
