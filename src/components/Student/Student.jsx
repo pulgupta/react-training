@@ -1,21 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import "./Student.css";
-
-const DisplayDetails = ({ name, age }) => {
-  return (
-    <>
-      <div>
-        <span>Name of the selected student is: {name}</span>
-      </div>
-      <div>
-        <span>
-          Age of {name} is {age}
-        </span>
-      </div>
-    </>
-  );
-};
+import DisplayDetails from "../DisplayDetails";
 
 class Student extends Component {
   state = {
