@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./Student.css";
 import StudentDetails from "../StudentDetails";
 import { connect } from "react-redux";
-import { GetStudentList } from "../../actions";
+import { GetStudentList } from "../../actions/GetStudentList";
+import { SelectStudent } from "../../actions/SelectStudent";
 
 class Student extends Component {
   state = {
@@ -22,12 +23,10 @@ class Student extends Component {
   }
 
   showDetails = index => {
-    this.setState({
-      details: {
-        name: this.state.students[index].name,
-        age: this.state.students[index].age
-      }
-    });
+    // Add a way to change the route of the component
+    console.log("is this getting called");
+    this.props.SelectStudent(this.props.students[index]);
+    this.props.history.push("/studentdetails");
   };
 
   render() {
@@ -41,19 +40,15 @@ class Student extends Component {
             <span>: {student.age}</span>
           </span>
         ))}
-        {Object.keys(this.state.details).length !== 0 && (
-          <StudentDetails
-            name={this.state.details.name}
-            age={this.state.details.age}
-          />
-        )}
+        {Object.keys(this.state.details).length !== 0 && <StudentDetails />}
       </>
     );
   }
 }
 
 const mapDispatchToProps = {
-  GetStudentList
+  GetStudentList,
+  SelectStudent
 };
 
 const mapStoreToProps = store => {

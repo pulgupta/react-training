@@ -48,7 +48,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Img1} />
             <Route path="/student" component={Student} />
-            <Route path="/details" component={StudentDetails} />
+            <Route path="/studentdetails" component={StudentDetails} />
           </Switch>
         </BrowserRouter>
       </Provider>

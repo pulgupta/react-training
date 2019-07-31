@@ -1,24 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const StudentDetails = ({ name, age }) => {
+const StudentDetails = props => {
   return (
     <React.Fragment>
       <div>
-        <span>Name of the selected student is: {name}</span>
+        <span>Name of the selected student is: {props.student.name}</span>
       </div>
       <div>
         <span>
-          Age of {name} is {age}
+          Age of {props.student.name} is {props.student.age}
         </span>
       </div>
     </React.Fragment>
   );
 };
 
-StudentDetails.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number
+const mapStoreToProps = store => {
+  console.log("store is", store);
+  return {
+    student: store.SelectedStudent.selectedStudent
+  };
 };
 
-export default StudentDetails;
+export default connect(
+  mapStoreToProps,
+  null
+)(StudentDetails);
