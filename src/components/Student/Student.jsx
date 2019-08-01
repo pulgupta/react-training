@@ -66,6 +66,7 @@ class Student extends Component {
   };
 
   handleShowMultipleDetails = () => {
+    debugger;
     this.props.SelectMultipleStudent(this.state.selectedStudents);
     this.props.history.push("/details");
   };
@@ -81,7 +82,7 @@ class Student extends Component {
         <br />
         <span
           className="pointer btn btn-danger"
-          onClick={() => this.props.history.push("/details")}
+          onClick={this.handleShowMultipleDetails}
         >
           Show Multiple Details
         </span>
