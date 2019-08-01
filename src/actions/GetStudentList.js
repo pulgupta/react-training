@@ -1,3 +1,5 @@
+import { STUDENTLIST } from "../types";
+
 import axios from "axios";
 
 export const GetStudentList = () => async dispatch => {
@@ -6,7 +8,7 @@ export const GetStudentList = () => async dispatch => {
   );
   console.log("CHECK THIS SHOULD NOT BE CALLED MULTIPLE TIMES");
   dispatch({
-    type: "STUDENTLIST",
+    type: STUDENTLIST,
     payload: studentData.data
   });
 };
