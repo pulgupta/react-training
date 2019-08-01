@@ -4,20 +4,49 @@ import { connect } from "react-redux";
 const StudentDetails = props => {
   return (
     <React.Fragment>
-      <span className="pointer" onClick={() => props.history.push("/student")}>
+      <br />
+      <span
+        className="pointer anchor"
+        onClick={() => props.history.push("/student")}
+      >
         Back
       </span>
       <br />
       <br />
-      <div>
-        <p>Name of the selected student is: {props.student.name}</p>
-        <p>
-          Age of {props.student.name} is {props.student.age}
-        </p>
-        <p>Class is: {props.student.class}</p>
-        <p>Section is: {props.student.section}</p>
-        <p>Roll Number is: {props.student.rollNumber}</p>
-      </div>
+      <table align="center">
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>
+              <strong>{props.student.name}</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>Age</td>
+            <td>
+              <strong>{props.student.age}</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>Class</td>
+            <td>
+              <strong>{props.student.class}</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>Section</td>
+            <td>
+              <strong>{props.student.section}</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>Roll Number</td>
+            <td>
+              <strong>{props.student.rollNumber}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </React.Fragment>
   );
 };
