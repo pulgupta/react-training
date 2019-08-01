@@ -12,6 +12,7 @@ class Student extends Component {
   };
 
   componentDidMount() {
+    // Checking if we have data in the redux
     if (this.props.students.length === 0) {
       console.log("So the list of students are still not set");
       this.props.GetStudentList();
@@ -71,6 +72,7 @@ const mapDispatchToProps = {
 
 const mapStoreToProps = store => {
   return {
+    // Studnet is coming from combine Reducer
     students: store.Student.studentList
   };
 };

@@ -59,7 +59,7 @@ const StudentDetails = props => {
 // available to us as a prop property.
 const mapStoreToProps = store => {
   return {
-    student: store.SelectedStudent.selectedStudent
+    student: store.Student.selectedStudent
   };
 };
 
