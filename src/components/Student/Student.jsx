@@ -7,12 +7,14 @@ import {
   FilterStudentList
 } from "../../actions/GetStudentList";
 import { SelectStudent } from "../../actions/SelectStudent";
+import { MyRadio } from "../MyRadio";
 
 class Student extends Component {
   state = {
     students: [],
     details: {},
-    filter: ""
+    filter: "",
+    seachSwitch: true
   };
 
   componentDidMount() {
@@ -39,10 +41,16 @@ class Student extends Component {
   handleChange = e => {
     // This is async so we will need to use call back
     this.setState({ filter: e.target.value }, () => {
-      if (this.state.filter.length >= 3) {
+      if (this.state.filter.length >= 3 && this.state.seachSwitch) {
         this.props.FilterStudentList(this.props.students, this.state.filter);
       }
     });
+  };
+
+  filterControl = value => {
+    console.log("this is parent ", value);
+    if (value === "YES") this.setState({ seachSwitch: true });
+    else this.setState({ seachSwitch: false });
   };
 
   render() {
@@ -58,6 +66,12 @@ class Student extends Component {
           type="text"
           onChange={this.handleChange}
           value={this.state.filter}
+        />
+        <br />
+        <br />
+        <MyRadio
+          list={["YES", "NO"]}
+          onClick={value => this.filterControl(value)}
         />
         <br />
         <br />
