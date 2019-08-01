@@ -1,6 +1,5 @@
 const initialState = {
-  studentList: [],
-  selectedStudent: {}
+  studentList: []
 };
 export const Student = (state = initialState, action) => {
   switch (action.type) {

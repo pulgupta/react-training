@@ -1,5 +1,4 @@
 const initialState = {
-  studentList: [],
   selectedStudent: {}
 };
 export const SelectedStudent = (state = initialState, action) => {
