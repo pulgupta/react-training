@@ -2,6 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 
 const StudentDetails = props => {
+  if (!props.student.name) {
+    props.history.push("/student");
+  }
   return (
     <React.Fragment>
       <br />
@@ -40,7 +43,7 @@ const StudentDetails = props => {
             </td>
           </tr>
           <tr>
-            <td>Roll Number</td>
+            <td>RollNumber</td>
             <td>
               <strong>{props.student.rollNumber}</strong>
             </td>
