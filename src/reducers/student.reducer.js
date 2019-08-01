@@ -1,8 +1,9 @@
-import { STUDENTLIST, SELECTEDSTUDENT } from "../types";
+import { STUDENTLIST, SELECTEDSTUDENT, FILTEREDLIST } from "../types";
 
 const initialState = {
   studentList: [],
-  selectedStudent: {}
+  selectedStudent: {},
+  filteredList: []
 };
 export const Student = (state = initialState, action) => {
   switch (action.type) {
@@ -16,7 +17,11 @@ export const Student = (state = initialState, action) => {
         ...state, // this means copy all the existing state of the redux store.
         selectedStudent: action.payload // Now just update single property of the store
       };
-
+    case FILTEREDLIST:
+      return {
+        ...state,
+        filteredList: action.payload
+      };
     default:
       return state;
   }

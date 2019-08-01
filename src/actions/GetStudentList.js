@@ -1,4 +1,5 @@
 import { STUDENTLIST } from "../types";
+import { FILTEREDLIST } from "../types";
 
 import axios from "axios";
 
@@ -10,5 +11,15 @@ export const GetStudentList = () => async dispatch => {
   dispatch({
     type: STUDENTLIST,
     payload: studentData.data
+  });
+};
+
+export const FilterStudentList = (studentList, filter) => dispatch => {
+  const studentData = studentList.filter(
+    student => student.name.indexOf(filter) !== -1
+  );
+  dispatch({
+    type: FILTEREDLIST,
+    payload: studentData
   });
 };

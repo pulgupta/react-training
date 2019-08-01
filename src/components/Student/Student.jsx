@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import "./Student.css";
 import StudentDetails from "../StudentDetails";
 import { connect } from "react-redux";
-import { GetStudentList } from "../../actions/GetStudentList";
+import {
+  GetStudentList,
+  FilterStudentList
+} from "../../actions/GetStudentList";
 import { SelectStudent } from "../../actions/SelectStudent";
 
 class Student extends Component {
   state = {
     students: [],
-    details: {}
+    details: {},
+    filter: ""
   };
 
   componentDidMount() {
@@ -32,6 +36,15 @@ class Student extends Component {
     this.props.history.push("/studentdetails");
   };
 
+  handleChange = e => {
+    // This is async so we will need to use call back
+    this.setState({ filter: e.target.value }, () => {
+      if (this.state.filter.length >= 3) {
+        this.props.FilterStudentList(this.props.students, this.state.filter);
+      }
+    });
+  };
+
   render() {
     return (
       <div>
@@ -40,10 +53,17 @@ class Student extends Component {
           Homepage
         </a>
         <br />
+        <br /> <strong>Filter: </strong>
+        <input
+          type="text"
+          onChange={this.handleChange}
+          value={this.state.filter}
+        />
+        <br />
         <br />
         {this.props.students.map((student, index) => (
           <span
-            className="student btn btn-primary pointer"
+            className="student btn btn-secondary pointer"
             onClick={() => this.showDetails(index)}
             key={index}
           >
@@ -67,13 +87,17 @@ class Student extends Component {
 // from the prop property
 const mapDispatchToProps = {
   GetStudentList,
-  SelectStudent
+  SelectStudent,
+  FilterStudentList
 };
 
 const mapStoreToProps = store => {
   return {
     // Studnet is coming from combine Reducer
-    students: store.Student.studentList
+    students:
+      store.Student.filteredList.length !== 0
+        ? store.Student.filteredList
+        : store.Student.studentList
   };
 };
 
