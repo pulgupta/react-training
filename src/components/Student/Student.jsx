@@ -33,19 +33,31 @@ class Student extends Component {
 
   render() {
     return (
-      <>
-        <a href="/">Homepage</a>
-        <p>Student Data</p>
+      <div>
+        <br />
+        <a className="btn btn-danger" href="/">
+          Homepage
+        </a>
+        <br />
+        <br />
         {this.props.students.map((student, index) => (
-          <span className="student" key={index}>
-            <span className="pointer" onClick={() => this.showDetails(index)}>
-              {student.name}
+          <span
+            className="student btn btn-primary pointer"
+            onClick={() => this.showDetails(index)}
+            key={index}
+          >
+            <span>
+              <strong>Name: </strong> {student.name}
             </span>
-            <span>: {student.age}</span>
+            <br />
+            <span>
+              <strong>Roll Number: </strong>
+              {student.rollNumber}
+            </span>
           </span>
         ))}
         {Object.keys(this.state.details).length !== 0 && <StudentDetails />}
-      </>
+      </div>
     );
   }
 }

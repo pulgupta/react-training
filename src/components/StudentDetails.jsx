@@ -6,7 +6,7 @@ const StudentDetails = props => {
     <React.Fragment>
       <br />
       <span
-        className="pointer anchor"
+        className="pointer btn btn-danger"
         onClick={() => props.history.push("/student")}
       >
         Back

@@ -20,7 +20,9 @@ const Img1 = props => {
     <div>
       <img src={logo} className="App-logo" alt={props.alt} />
       <br />
-      <a href="/student">Check Students</a>
+      <a className="btn btn-primary" href="/student">
+        Check Students
+      </a>
     </div>
   );
 };
