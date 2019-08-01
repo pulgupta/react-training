@@ -1,9 +1,15 @@
-import { STUDENTLIST, SELECTEDSTUDENT, FILTEREDLIST } from "../types";
+import {
+  STUDENTLIST,
+  SELECTEDSTUDENT,
+  FILTEREDLIST,
+  MULTIPLESELECTED
+} from "../types";
 
 const initialState = {
   studentList: [],
   selectedStudent: {},
-  filteredList: []
+  filteredList: [],
+  multipleStudents: []
 };
 export const Student = (state = initialState, action) => {
   switch (action.type) {
@@ -21,6 +27,12 @@ export const Student = (state = initialState, action) => {
       return {
         ...state,
         filteredList: action.payload
+      };
+
+    case MULTIPLESELECTED:
+      return {
+        ...state,
+        multipleStudents: action.payload
       };
     default:
       return state;

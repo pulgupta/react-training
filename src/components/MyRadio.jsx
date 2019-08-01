@@ -1,5 +1,4 @@
 import React from "react";
-import { tsPropertySignature } from "@babel/types";
 
 export const MyRadio = props => {
   return (

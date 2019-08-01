@@ -7,9 +7,11 @@ import "./App.css";
 import Student from "./components/Student/Student";
 import { Route, BrowserRouter } from "react-router-dom";
 import StudentDetails from "./components/StudentDetails";
+import MultipleDetails from "./components/MultipleDetails";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
+import MyAccordianContainer from "./components/MyAccordianContainer";
 import reducers from "./reducers/index";
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -23,6 +25,11 @@ const Img1 = props => {
       <a className="btn btn-primary" href="/student">
         Check Students
       </a>
+      <br />
+      <br />
+      <MyAccordianContainer title="My Accordian" isOpen={true}>
+        <p>This is my content in the accordian</p>
+      </MyAccordianContainer>
     </div>
   );
 };
@@ -54,8 +61,9 @@ function App() {
       >
         <BrowserRouter>
           <Route exact path="/" component={Img1} />
-          <Route path="/student" component={Student} />
-          <Route path="/studentdetails" component={StudentDetails} />
+          <Route exact path="/student" component={Student} />
+          <Route exact path="/studentdetails" component={StudentDetails} />
+          <Route exact path="/details" component={MultipleDetails} />
         </BrowserRouter>
       </Provider>
     </div>

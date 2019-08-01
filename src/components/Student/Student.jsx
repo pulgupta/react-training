@@ -6,7 +6,10 @@ import {
   GetStudentList,
   FilterStudentList
 } from "../../actions/GetStudentList";
-import { SelectStudent } from "../../actions/SelectStudent";
+import {
+  SelectStudent,
+  SelectMultipleStudent
+} from "../../actions/SelectStudent";
 import { MyRadio } from "../MyRadio";
 
 class Student extends Component {
@@ -14,7 +17,8 @@ class Student extends Component {
     students: [],
     details: {},
     filter: "",
-    seachSwitch: true
+    seachSwitch: true,
+    selectedStudents: []
   };
 
   componentDidMount() {
@@ -53,6 +57,19 @@ class Student extends Component {
     else this.setState({ seachSwitch: false });
   };
 
+  addSelectedStudent = student => {
+    console.log("Added student ", student);
+    let stud = this.state.selectedStudents;
+    stud.push(student);
+    this.setState({ selectedStudents: stud });
+    console.log(stud);
+  };
+
+  handleShowMultipleDetails = () => {
+    this.props.SelectMultipleStudent(this.state.selectedStudents);
+    this.props.history.push("/details");
+  };
+
   render() {
     return (
       <div>
@@ -60,6 +77,14 @@ class Student extends Component {
         <a className="btn btn-danger" href="/">
           Homepage
         </a>
+        <br />
+        <br />
+        <span
+          className="pointer btn btn-danger"
+          onClick={() => this.props.history.push("/details")}
+        >
+          Show Multiple Details
+        </span>
         <br />
         <br /> <strong>Filter: </strong>
         <input
@@ -76,20 +101,28 @@ class Student extends Component {
         <br />
         <br />
         {this.props.students.map((student, index) => (
-          <span
-            className="student btn btn-secondary pointer"
-            onClick={() => this.showDetails(index)}
-            key={index}
-          >
-            <span>
-              <strong>Name: </strong> {student.name}
+          <React.Fragment key={index}>
+            <span
+              className="student btn btn-secondary pointer"
+              onClick={() => this.showDetails(index)}
+              key={index}
+            >
+              <span>
+                <strong>Name: </strong> {student.name}
+              </span>
+              <br />
+              <span>
+                <strong>Roll Number: </strong>
+                {student.rollNumber}
+              </span>
             </span>
-            <br />
-            <span>
-              <strong>Roll Number: </strong>
-              {student.rollNumber}
-            </span>
-          </span>
+            <input
+              type="checkbox"
+              name="student"
+              value="selected"
+              onClick={() => this.addSelectedStudent(student)}
+            />
+          </React.Fragment>
         ))}
         {Object.keys(this.state.details).length !== 0 && <StudentDetails />}
       </div>
@@ -102,7 +135,8 @@ class Student extends Component {
 const mapDispatchToProps = {
   GetStudentList,
   SelectStudent,
-  FilterStudentList
+  FilterStudentList,
+  SelectMultipleStudent
 };
 
 const mapStoreToProps = store => {
