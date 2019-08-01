@@ -54,12 +54,16 @@ const StudentDetails = props => {
   );
 };
 
+// Map Store to props is required whenever we want to read any data from the store.
+// We specify the store property we want to read and then this property data will be
+// available to us as a prop property.
 const mapStoreToProps = store => {
   return {
     student: store.SelectedStudent.selectedStudent
   };
 };
 
+// Since we are not calling any action here we have not used mapDispatchToProp
 export default connect(
   mapStoreToProps,
   null

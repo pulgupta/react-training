@@ -62,6 +62,8 @@ class Student extends Component {
   }
 }
 
+// MapDispatchToProps ensure that we have the action as a prop function so that we can refer to that action
+// from the prop property
 const mapDispatchToProps = {
   GetStudentList,
   SelectStudent
